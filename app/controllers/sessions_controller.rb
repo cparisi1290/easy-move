@@ -6,12 +6,18 @@ class SessionsController < ApplicationController
 
     post '/users' do
             # create new user
-        @user = User.new(params)
-            # save new user
-        @user.save
-            # create new session to remember user
-        session[:user_id] = @user.id
-        redirect "/users/#{@user.id}"
+            # make sure user signs up with valid data
+        @user = User.new(params) # params is a hash with k/v pairs
+        if @user.name.blank? || @user.email.blank? || @user.password.blank? || User.find_by_email(params["email"])
+             # flash warning
+            redirect '/signup'
+        else
+                # save new user
+            @user.save
+                # create new session to remember user
+            session[:user_id] = @user.id
+            redirect "/users/#{@user.id}"
+        end
     end
 
     get '/login' do
@@ -30,7 +36,6 @@ class SessionsController < ApplicationController
         end
     end
 
-    
     get '/logout' do
         session.clear
         redirect '/'
