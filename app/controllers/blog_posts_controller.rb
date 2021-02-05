@@ -16,18 +16,23 @@ class BlogPostsController < ApplicationController
 
     end
 
+    # READ display one particular blog post show page
+    get '/blog_posts/:id' do
+        
+    end
+
     # UPDATE display form
-    get '/blog_posts' do
+    get '/blog_posts/:id/edit' do
 
     end
 
     # UPDATE 
-    patch '/blog_posts' do
+    patch '/blog_posts/:id' do
 
     end
 
 
-    delete '/blog_posts' do
+    delete '/blog_posts:id' do
 
     end
 end
