@@ -17,4 +17,16 @@ class SessionsController < ApplicationController
     get '/login' do
         erb :"sessions/login"
     end
+
+    post '/login' do
+        # if email & password are valid, create session & send to user dashboard
+        # if invalid, redirect to login page
+        user = User.find_by_email(params[:email])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            redirect "/users/#{@user.id}"
+        else
+            redirect '/login'
+        end
+    end
 end
