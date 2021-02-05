@@ -7,16 +7,17 @@ class SessionsController < ApplicationController
     post '/users' do
             # create new user
             # make sure user signs up with valid data
-        @user = User.new(params) # params is a hash with k/v pairs
-        if @user.name.blank? || @user.email.blank? || @user.password.blank? || User.find_by_email(params["email"])
+        user = User.new(params) # params is a hash with k/v pairs
+        # if form is blank and user email is already in system, redirect to signup page to try again
+        if user.name.blank? || user.email.blank? || user.password.blank? || User.find_by_email(params["email"])
              # flash warning
             redirect '/signup'
         else
                 # save new user
-            @user.save
+            user.save
                 # create new session to remember user
-            session[:user_id] = @user.id
-            redirect "/users/#{@user.id}"
+            session[:user_id] = user.id
+            redirect "/users/#{user.id}"
         end
     end
 
