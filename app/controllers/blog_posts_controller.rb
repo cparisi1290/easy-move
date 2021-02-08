@@ -2,7 +2,7 @@ class BlogPostsController < ApplicationController
 
     # READ display all blog posts
     get '/blog_posts' do
-        redirect_if_not_logged_in
+        redirect_if_not_logged_in        
         @blog_posts = BlogPost.all
         erb :"blog_posts/index"
     end
@@ -16,9 +16,11 @@ class BlogPostsController < ApplicationController
     # CREAT new blog post from current logged in user
     post '/blog_posts' do
         redirect_if_not_logged_in
-        blog_post = current_user.blog_posts.build(params)
-        blog_post.save
-        redirect '/blog_posts'
+        @blog_post = BlogPost.new(params)
+        @blog_post.user_id = current_user.id 
+        # blog_post = current_user.blog_posts.build(params)
+        @blog_post.save
+        redirect "/blog_posts/#{@blog_post.id}"
     end
 
     # READ display one particular blog post show page
@@ -36,27 +38,27 @@ class BlogPostsController < ApplicationController
     end
 
     # UPDATE 
-    # patch '/blog_posts/:id' do
-    #     raise params.inspect
-    #     binding.pry
-        # if logged_in?
-        #     @blog_post = BlogPost.find(params["id"])
-        #     @blog_post.update(params["user"])
-        #     redirect "/blog_posts/#{@blog_post.id}"
-        # else 
-        #     redirect '/login'
-        # end
-    # end
+    patch '/blog_posts/:id' do
+        binding.pry
+        if logged_in?
+            @blog_post = BlogPost.find(params["id"])
+            @blog_post.update(params["user"])
+            redirect "/blog_posts/#{@blog_post.id}"
+        else 
+            redirect '/login'
+        end
+    end
 
-    post '/blog_posts/:id' do
-        @blog_post = BlogPost.find(params["id"])
-        redirect_if_not_authorized           
-        @blog_post.update(params["user"])
-        redirect "/blog_posts/#{@blog_post.id}"
-      end
+    # post '/blog_posts/:id' do
+    #     @blog_post = BlogPost.find(params["id"])
+    #     # redirect_if_not_authorized           
+    #     @blog_post.update(params["user"])
+    #     @blog_post.save
+    #     redirect "/blog_posts/#{@blog_post.id}"
+    #   end
 
 
-    delete '/blog_posts:id' do
+    delete '/blog_posts/:id' do
         @blog_post = BlogPost.find(params["id"])
         redirect_if_not_authorized
         @blog_post.destroy
