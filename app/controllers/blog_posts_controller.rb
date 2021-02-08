@@ -28,7 +28,12 @@ class BlogPostsController < ApplicationController
 
     # READ display one particular blog post show page
     get '/blog_posts/:id' do
-
+        if logged_in?
+            @blog_post = BlogPost.find(params["id"])
+            erb :"blog_posts/show"
+        else 
+            redirect '/login'
+        end
     end
 
     # UPDATE display form
