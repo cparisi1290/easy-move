@@ -39,7 +39,6 @@ class BlogPostsController < ApplicationController
 
     # UPDATE 
     patch '/blog_posts/:id' do
-        binding.pry
         if logged_in?
             @blog_post = BlogPost.find(params["id"])
             @blog_post.update(params["user"])
@@ -48,15 +47,6 @@ class BlogPostsController < ApplicationController
             redirect '/login'
         end
     end
-
-    # post '/blog_posts/:id' do
-    #     @blog_post = BlogPost.find(params["id"])
-    #     # redirect_if_not_authorized           
-    #     @blog_post.update(params["user"])
-    #     @blog_post.save
-    #     redirect "/blog_posts/#{@blog_post.id}"
-    #   end
-
 
     delete '/blog_posts/:id' do
         @blog_post = BlogPost.find(params["id"])
