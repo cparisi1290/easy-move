@@ -1,6 +1,10 @@
 <h2><%=@blog_post.title%></h2>
-<%binding.pry%>
-<h4>by <%=@blog_post.user.name.capitalize%></h4>
+
+<h4>by 
+<%if @blog_post.user%>
+<%=@blog_post.user.name.capitalize%></h4>
+<%end%>
+
 <h5><%=@blog_post.created_at%></h5><br><br>
 
 <%=@blog_post.content%><br><br>
