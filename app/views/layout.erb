@@ -15,6 +15,11 @@
   </head>
   <body>
     <div class="wrapper">
+        <%if logged_in?%>
+        <%else%>
+          <a href="/signup">Signup</a>
+          <a href="/login">Login</a>
+        <%end%>
 
         <%= yield %>
 
