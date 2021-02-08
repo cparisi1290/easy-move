@@ -1,3 +1,9 @@
 <h2>Welcome <%=current_user.name.capitalize%>!</h2>
 
 <h3>Your Blog Posts</h3>
+<%@user.blog_posts.each do |blog|%>
+    <a href="/blog_posts/<%=blog.id%>"><%=blog.title%></a><br>
+    <h5><%=blog.created_at%></h5>
+<%end%>    
+
+
