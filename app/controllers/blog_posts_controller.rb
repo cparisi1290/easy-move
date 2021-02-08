@@ -39,13 +39,12 @@ class BlogPostsController < ApplicationController
 
     # UPDATE 
     patch '/blog_posts/:id' do
-        if logged_in?
-            find_blog_post
-            @blog_post.update(params["user"])
-            redirect "/blog_posts/#{@blog_post.id}"
-        else 
-            redirect '/login'
-        end
+        redirect_if_not_logged_in
+        find_blog_post
+        redirect_if_not_logged_in
+        @blog_post.update(params["user"])
+        redirect "/blog_posts/#{@blog_post.id}"
+
     end
 
     delete '/blog_posts/:id' do
