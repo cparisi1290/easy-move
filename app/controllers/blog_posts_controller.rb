@@ -26,13 +26,13 @@ class BlogPostsController < ApplicationController
     # READ display one particular blog post show page
     get '/blog_posts/:id' do
         redirect_if_not_logged_in
-        @blog_post = BlogPost.find(params["id"])
+        find_blog_post
         erb :"blog_posts/show"
     end
 
     # UPDATE display form
     get '/blog_posts/:id/edit' do
-        @blog_post = BlogPost.find(params["id"])
+        find_blog_post
         redirect_if_not_authorized
         erb :"blog_posts/edit"
     end
@@ -40,7 +40,7 @@ class BlogPostsController < ApplicationController
     # UPDATE 
     patch '/blog_posts/:id' do
         if logged_in?
-            @blog_post = BlogPost.find(params["id"])
+            find_blog_post
             @blog_post.update(params["user"])
             redirect "/blog_posts/#{@blog_post.id}"
         else 
@@ -49,7 +49,7 @@ class BlogPostsController < ApplicationController
     end
 
     delete '/blog_posts/:id' do
-        @blog_post = BlogPost.find(params["id"])
+        find_blog_post
         redirect_if_not_authorized
         @blog_post.destroy
         redirect '/blog_posts'
@@ -61,5 +61,9 @@ class BlogPostsController < ApplicationController
         if @blog_post.user != current_user
             redirect '/blog_posts'
         end
+    end
+
+    def find_blog_post
+        @blog_post = BlogPost.find(params["id"])
     end
 end
