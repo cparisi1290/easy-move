@@ -1,12 +1,16 @@
 <h2><%=@blog_post.title%></h2>
+<%binding.pry%>
 <h4>by <%=@blog_post.user.name.capitalize%></h4>
 <h5><%=@blog_post.created_at%></h5><br><br>
 
 <%=@blog_post.content%><br><br>
 
+
+<%if @blog_post.user == current_user%>
 <a href="/blog_posts/<%=@blog_post.id%>/edit">Edit</a>
 
 <form action="/blog_posts/<%=@blog_post.id%>" method="POST">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete">
 </form>
+<%end%>
