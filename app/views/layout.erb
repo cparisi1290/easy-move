@@ -16,6 +16,8 @@
   <body>
     <div class="wrapper">
         <%if logged_in?%>
+          <a href="/blog_posts">View Blog Posts |</a>
+          <a href="/blog_posts/new">Create New Blog Posts |</a>
         <%else%>
           <a href="/signup">Signup</a>
           <a href="/login">Login</a>
