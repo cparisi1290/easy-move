@@ -4,6 +4,11 @@
 <%@user.blog_posts.each.with_index(1) do |blog, i|%>
     <%=i%>. <a href="/blog_posts/<%=blog.id%>"><%=blog.title%></a><br>
         <h5><%=blog.created_at%></h5>
-<%end%>    
+<%end%>   
+
+<h3>Your Items</h3>
+<%@user.items.each.with_index(1) do |item, i|%>
+    <%=i%>. <a href="/items/<%=item.id%>"><%=item.name%></a><br>
+<%end%>
 
 
