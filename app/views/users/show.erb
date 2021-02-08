@@ -7,10 +7,11 @@
 <%end%>   
 
 <h3>Your Items</h3>
+<%binding.pry%>
 <%@user.items.each.with_index(1) do |item, i|%>
     <%=i%>.<%=item.name%><br>
-    <%=item.category.name%><br>
-    <%=item.box.name%><br>
+    Category: <%=item.category.name%><br>
+    Box: <%=item.box.name%><br>
 <%end%>
 
 
