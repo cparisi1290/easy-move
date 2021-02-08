@@ -47,12 +47,30 @@ class BlogPostsController < ApplicationController
     end
 
     # UPDATE 
-    patch '/blog_posts/:id' do
+    # patch '/blog_posts/:id' do
+    #     raise params.inspect
+    #     binding.pry
+        # if logged_in?
+        #     @blog_post = BlogPost.find(params["id"])
+        #     @blog_post.update(params["user"])
+        #     redirect "/blog_posts/#{@blog_post.id}"
+        # else 
+        #     redirect '/login'
+        # end
+    # end
 
-    end
+    post '/blog_posts/:id' do
+        if logged_in?
+            @blog_post = BlogPost.find(params["id"])
+            @blog_post.update(params["user"])
+            redirect "/blog_posts/#{@blog_post.id}"
+        else 
+            redirect '/login'
+        end
+      end
 
 
     delete '/blog_posts:id' do
-
+        
     end
 end
