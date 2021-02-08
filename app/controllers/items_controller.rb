@@ -1,7 +1,18 @@
 class ItemsController < ApplicationController
 
-    get '/' do
+    get '/users/show' do
         @items = Item.all
-        erb :'users/show'
+        erb :"users/show"
+    end
+
+    get '/items/new' do
+        erb :"items/new"
+    end
+
+    post '/items' do
+        @item = Item.new(params)
+        @item.user_id = current_user.id
+        @item.save
+        redirect "/users/show"
     end
 end
