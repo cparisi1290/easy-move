@@ -38,7 +38,12 @@ class BlogPostsController < ApplicationController
 
     # UPDATE display form
     get '/blog_posts/:id/edit' do
-
+        if logged_in?
+            @blog_post = BlogPost.find(params["id"])
+            erb :"blog_posts/edit"
+        else 
+            redirect '/login'
+        end
     end
 
     # UPDATE 
