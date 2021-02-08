@@ -1,13 +1,12 @@
 <h2>Edit Your Post</h2>
 
 <form action="/blog_posts/<%=@blog_post.id%>" method="POST">
-    <input type="hidden" name="_method" value="PATCH">
+        <input type="hidden" name="_method" value="PATCH">
 
-    <label for="title">Title:</label>
-    <input type="title" name="user[title]" id="title" value="<%=@blog_post.title%>"><br>
+        <label for="title">Title:</label>
+        <input type="title" name="user[title]" value="<%=@blog_post.title%>"><br>
 
-    <label for="content">Content:</label>
-    <textarea style="width:auto; height:auto;" name="user[content]"><%=@blog_post.content%></textarea><br>
-
-    <input type="submit" value="Edit">
-</form>
+        <label for="content">Content:</label>
+        <textarea style="width:auto; height:auto;" id="content" name="user[content]"><%=@blog_post.content%></textarea><br>
+        <input type="submit" value="Edit">
+    </form>
