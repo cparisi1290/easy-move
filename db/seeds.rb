@@ -15,5 +15,5 @@ bedroom_1 = Box.create(name: "Bedroom 1")
 tools = Category.create(name: "Tools")
 electronics = Category.create(name: "Electronics")
 
-fishing_pole = Item.create(name: "Fishing Pole" box_id: hallway.id, category_id: tools.id,  user_id: gon.id)
-charger = Item.create(name: "Charger", box_id: bedroom1.id, category_id: electronics.id user_id: killua.id)
+fishing_pole = Item.create(name: "Fishing Pole", box_id: hallway.id, category_id: tools.id,  user_id: 1)
+charger = Item.create(name: "Charger", box_id: bedroom_1.id, category_id: electronics.id, user_id: 2)
