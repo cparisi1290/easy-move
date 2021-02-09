@@ -19,7 +19,7 @@ class BoxesController < ApplicationController
         redirect "/users/#{current_user.id}"
     end
 
-    get '/items/:id' do
+    get '/boxes/:id' do
         redirect_if_not_logged_in
         find_box
         erb :"boxes/show"
