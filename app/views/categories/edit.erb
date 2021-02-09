@@ -1,0 +1,15 @@
+<h2>Edit <%=@category.name.capitalize%> Category</h2>
+
+<form action="/categories/<%=@category.id%>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+
+    <label for="name">Name:</label>
+    <input type="name" name="user[name]" id="name" value="<%=@category.name.capitalize%>"><br>
+
+    <input type="submit" Value="Edit">
+</form>
+
+<form action="/categories/<%=@category.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Box">
+</form>
