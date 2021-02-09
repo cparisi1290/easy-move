@@ -1,0 +1,12 @@
+<h2>List of Your Items in the <%=@category.name.capitalize%> Category</h2>
+
+<%@category.items.each do |item|%>
+    <a href="/items/<%=item.id%>"><%=item.name%></a><br><br>
+<%end%>
+
+<a href="/categories/<%=@category.id%>/edit">Edit</a><br><br>
+
+<form action="/categories/<%=@category.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+</form>

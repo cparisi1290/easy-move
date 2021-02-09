@@ -17,4 +17,9 @@
     <%=i%>. <a href="/boxes/<%=box.id%>"><%=box.name%></a><br>
 <%end%>
 
+<h3>Your Categories</h3>
+<%@user.categories.each.with_index(1) do |category, i|%>
+    <%=i%>. <a href="/categories/<%=category.id%>"><%=category.name%></a><br>
+<%end%>
+
 
