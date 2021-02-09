@@ -11,9 +11,13 @@ class ItemsController < ApplicationController
 
     post '/items' do
         @item = Item.new(params)
-        @item.user_id = current_user.id
-        @item.save
-        redirect "/users/#{current_user.id}"
+        if @item.name.empty? 
+            redirect '/items/new'
+        else
+            @item.user_id = current_user.id
+            @item.save
+            redirect "/users/#{current_user.id}"
+        end
     end
 
     get '/items/:id' do
