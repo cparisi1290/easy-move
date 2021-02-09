@@ -1,0 +1,12 @@
+<h2>List of Your Items in the <%=@box.name.capitalize%> Box</h2>
+
+<!-- 
+- list this boxes' items 
+- create new item 
+-->
+
+<%@box.items.each do |item|%>
+    <a href="/items/<%=item.id%>"><%=item.name%></a>
+<%end%>
+
+
