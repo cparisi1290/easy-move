@@ -11,3 +11,8 @@
         
         <input type="submit" value="Edit">
     </form>
+
+<form action="/blog_posts/<%=@blog_post.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+</form>
