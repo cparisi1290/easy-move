@@ -5,7 +5,7 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 use Rack::MethodOverride
-user BoxesController
+use BoxesController
 use ItemsController
 use SessionsController
 use UsersController
