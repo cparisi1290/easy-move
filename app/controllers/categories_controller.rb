@@ -32,6 +32,20 @@ class CategoriesController < ApplicationController
         erb :"categories/edit"
     end
 
+    patch '/categories/:id' do
+        redirect_if_not_logged_in
+        find_category
+        @category.update(params["user"])
+        redirect "/categories/#{@category.id}"
+    end
+
+    delete '/categories/:id' do
+        redirect_if_not_logged_in
+        find_category
+        @category.destroy
+        redirect "/users/#{current_user.id}"
+    end
+
     private
 
     def find_category
