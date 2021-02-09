@@ -31,6 +31,13 @@ class BoxesController < ApplicationController
         erb :"boxes/edit"
     end
 
+    patch '/boxes/:id' do
+        redirect_if_not_logged_in
+        find_box
+        @box.update(params["user"])
+        redirect "/boxes/#{@box.id}"
+    end
+    
     private
 
     def find_box
