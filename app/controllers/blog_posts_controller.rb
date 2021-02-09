@@ -17,10 +17,14 @@ class BlogPostsController < ApplicationController
     post '/blog_posts' do
         redirect_if_not_logged_in
         @blog_post = BlogPost.new(params)
-        @blog_post.user_id = current_user.id 
-        # blog_post = current_user.blog_posts.build(params)
-        @blog_post.save
-        redirect "/blog_posts/#{@blog_post.id}"
+        if @blog_post.title.empty? || @blog_post.content.empty?
+            redirect '/blog_posts/new'
+        else
+            @blog_post.user_id = current_user.id 
+            # blog_post = current_user.blog_posts.build(params)
+            @blog_post.save
+            redirect "/blog_posts/#{@blog_post.id}"
+        end
     end
 
     # READ display one particular blog post show page
