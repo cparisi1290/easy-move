@@ -36,6 +36,7 @@ class BlogPostsController < ApplicationController
 
     # UPDATE display form
     get '/blog_posts/:id/edit' do
+        redirect_if_not_logged_in
         find_blog_post
         redirect_if_not_authorized
         erb :"blog_posts/edit"
@@ -48,7 +49,6 @@ class BlogPostsController < ApplicationController
         redirect_if_not_authorized
         @blog_post.update(params["user"])
         redirect "/blog_posts/#{@blog_post.id}"
-
     end
 
     delete '/blog_posts/:id' do
