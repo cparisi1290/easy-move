@@ -1,0 +1,15 @@
+<h2>Edit Item</h2>
+
+<form action="/items/<%=@item.id%>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+
+    <label for="name">Name:</label>
+    <input type="name" name="user[name]" id="name"><br>
+
+    <input type="submit" Value="Edit">
+</form>
+
+<form action="/items/<%=@item.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+</form>
