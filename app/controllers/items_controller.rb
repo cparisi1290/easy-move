@@ -15,4 +15,9 @@ class ItemsController < ApplicationController
         @item.save
         redirect "/users/#{current_user.id}"
     end
+
+    get '/items/:id' do
+        @item = Item.find(params["id"])
+        erb :"items/show"
+    end
 end
