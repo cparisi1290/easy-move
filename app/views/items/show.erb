@@ -1,4 +1,4 @@
-<h2><%=@item.name%></h2>
+<h2><%=@item.name.capitalize%></h2>
 
 Category: <%=@item.category.try(:name) || "N/A"%><br>
 Box: <%=@item.box.try(:name) || "N/A"%><br><br>
