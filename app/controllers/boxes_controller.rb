@@ -37,7 +37,14 @@ class BoxesController < ApplicationController
         @box.update(params["user"])
         redirect "/boxes/#{@box.id}"
     end
-    
+
+    delete '/boxes/:id' do
+        redirect_if_not_logged_in
+        find_box
+        @box.destroy
+        redirect "/users/#{current_user.id}"
+    end
+
     private
 
     def find_box
