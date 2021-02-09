@@ -45,7 +45,7 @@ class BlogPostsController < ApplicationController
     patch '/blog_posts/:id' do
         redirect_if_not_logged_in
         find_blog_post
-        redirect_if_not_logged_in
+        redirect_if_not_authorized
         @blog_post.update(params["user"])
         redirect "/blog_posts/#{@blog_post.id}"
 
