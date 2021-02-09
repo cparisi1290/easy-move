@@ -2,4 +2,6 @@
 
 <%@blog_posts.each.with_index(1) do |blog, i|%>
   <%=i%>. <a href="/blog_posts/<%=blog.id%>"><%=blog.title%></a><br>
+          by: <%=blog.user.name.capitalize%>
+          <h5><%=blog.formatted_created_at%></h5><br>
 <%end%>
