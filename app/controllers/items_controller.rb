@@ -31,4 +31,10 @@ class ItemsController < ApplicationController
         @item.update(params["user"])
         redirect "/items/#{@item.id}"
     end
+
+    delete '/items/:id' do
+        @item = Item.find(params["id"])
+        @item.destroy
+        redirect "/users/#{current_user.id}"
+    end
 end
