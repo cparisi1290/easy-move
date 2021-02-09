@@ -13,6 +13,6 @@ class ItemsController < ApplicationController
         @item = Item.new(params)
         @item.user_id = current_user.id
         @item.save
-        redirect "/users/show"
+        redirect "/users/#{current_user.id}"
     end
 end
