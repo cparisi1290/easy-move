@@ -9,7 +9,7 @@
 
 <h3>Your Items</h3>
 <%@user.items.each.with_index(1) do |item, i|%>
-    <%=i%>.<%=item.name%><br>
+    <%=i%>. <a href="/items/<%=item.id%>"><%=item.name%></a><br>
 <%end%>
 
 
