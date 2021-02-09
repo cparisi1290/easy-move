@@ -1,0 +1,15 @@
+<h2>Edit <%=@box.name.capitalize%></h2>
+
+<form action="/boxes/<%=@item.id%>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+
+    <label for="name">Name:</label>
+    <input type="name" name="user[name]" id="name" value="<%=@box.name%>"><br>
+
+    <input type="submit" Value="Edit">
+</form>
+
+<form action="/boxes/<%=@box.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+</form>
