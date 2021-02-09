@@ -25,6 +25,12 @@ class BoxesController < ApplicationController
         erb :"boxes/show"
     end
 
+    get '/boxes/:id/edit' do
+        redirect_if_not_logged_in
+        find_box
+        erb :"boxes/edit"
+    end
+
     private
 
     def find_box
