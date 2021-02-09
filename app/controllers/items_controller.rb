@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
     get '/users/show' do
         @items = Item.all
-        erb :"users/show"
+        redirect "/users/#{current_user.id}"
     end
 
     get '/items/new' do
