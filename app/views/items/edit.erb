@@ -1,4 +1,4 @@
-<h2>Edit <%=@item.name.capitalize%></h2>
+<h2>Edit Item: <%=@item.name.capitalize%>, Box: <%=@item.box.name.capitalize%></h2>
 
 <form action="/items/<%=@item.id%>" method="POST">
     <input type="hidden" name="_method" value="PATCH">
@@ -19,7 +19,7 @@
         <%end%>
     </select><br><br>  
 
-    <input type="submit" Value="Edit">
+    <input type="submit" Value="Edit Item">
 </form>
 
 <form action="/items/<%=@item.id%>" method="POST">
