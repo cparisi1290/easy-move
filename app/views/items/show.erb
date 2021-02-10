@@ -4,8 +4,8 @@ Category: <%=@item.category.try(:name) || "N/A"%><br>
 Box: <%=@item.box.try(:name) || "N/A"%><br><br>
 
 
-<a href="/items/<%=@item.id%>/edit">Edit</a>
+<a href="/items/<%=@item.id%>/edit">Edit Item</a>
 <form action="/items/<%=@item.id%>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
+    <input type="submit" value="Delete Item">
 </form>
