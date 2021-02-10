@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
         else
             @item.user_id = current_user.id
             @item.save
-            redirect "/users/#{current_user.id}"
+            redirect "/items/#{@item.id}"
         end
     end
 
