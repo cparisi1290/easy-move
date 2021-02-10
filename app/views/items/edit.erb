@@ -1,10 +1,23 @@
-<h2>Edit Item</h2>
+<h2>Edit <%=@item.name.capitalize%></h2>
 
 <form action="/items/<%=@item.id%>" method="POST">
     <input type="hidden" name="_method" value="PATCH">
 
     <label for="name">Name:</label>
-    <input type="name" name="user[name]" id="name" value="<%=@item.name%>"><br>
+    <input type="name" name="user[name]" id="name" value="<%=@item.name.capitalize%>"><br><br>
+
+    <label>Categories: </label>
+    <%current_user.categories.each do |category|%>
+      <input type="checkbox" id="category_<%=category.id%>" name="user[category_id]" value="<%=category.id%>">
+      <label><%=category.name.capitalize%></label>
+      <%end%><br><br>
+
+    <label>Box: </label>
+    <select name="user[box_id]">
+        <%current_user.boxes.each do |box|%>
+            <option value="<%=box.id%>"><%=box.name.capitalize%></option><br>
+        <%end%>
+    </select><br><br>  
 
     <input type="submit" Value="Edit">
 </form>
