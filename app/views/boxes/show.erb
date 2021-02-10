@@ -20,7 +20,7 @@ x- list this boxes' items
 
 
 <label>Category: </label>
-        <select name="box_id">
+        <select name="category_id">
             <%current_user.categories.each do |category|%>
                 <option value="<%=category.id%>"><%=category.name.capitalize%></option><br>
             <%end%>
