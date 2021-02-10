@@ -8,12 +8,37 @@ x- list this boxes' items
 -->
 
 <%@box.items.each do |item|%>
-    <a href="/items/<%=item.id%>"><%=item.name%></a><br><br>
-<%end%>
 
-<a href="/boxes/<%=@box.id%>/edit">Edit</a><br><br>
+    <a href="/items/<%=item.id%>"><%=item.name.capitalize%></a><br>
+    <%=item.category.try(:name) || "N/A"%><br><br>
+<%end%><br>
+
+
+<form action="/items" method="POST">
+    <label for=add_new_item>Add New Item</label>
+    <input type="text" id="add_new_item" name="name">
+
+
+<label>Category: </label>
+        <select name="box_id">
+            <%current_user.categories.each do |category|%>
+                <option value="<%=category.id%>"><%=category.name.capitalize%></option><br>
+            <%end%>
+        </select>
+
+
+    <label>Box: </label>
+        <select name="box_id">
+            <option value="<%=@box.id%>"><%=@box.name.capitalize%></option>
+        </select>
+ 
+    <input type="submit" value="Submit"> 
+</form><br><br><br>
+
+
+<a href="/boxes/<%=@box.id%>/edit">Edit Box</a><br><br>
 
 <form action="/boxes/<%=@box.id%>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
+    <input type="submit" value="Delete Box">
 </form>
