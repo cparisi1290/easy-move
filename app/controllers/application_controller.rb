@@ -30,13 +30,13 @@ class ApplicationController < Sinatra::Base
 
     def redirect_if_not_logged_in
       if !logged_in?
-        redirect '/welcome'
+        redirect '/'
       end
     end
 
     def redirect_if_logged_in
       if logged_in?
-        redirect "/users/#{users.id}"
+        redirect "/users/#{current_user.id}"
       end
     end
   end
