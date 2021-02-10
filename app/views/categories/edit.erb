@@ -6,10 +6,10 @@
     <label for="name">Name:</label>
     <input type="name" name="user[name]" id="name" value="<%=@category.name.capitalize%>"><br>
 
-    <input type="submit" Value="Edit">
+    <input type="submit" Value="Edit Category">
 </form>
 
 <form action="/categories/<%=@category.id%>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Box">
+    <input type="submit" value="Delete Category">
 </form>
