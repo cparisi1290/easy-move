@@ -3,7 +3,28 @@
 <%@category.items.each do |item|%>
     <a href="/items/<%=item.id%>"><%=item.name.capitalize%></a><br>
     <%=item.box.name.try(:name) || "N/A"%><br><br>
-<%end%>
+<%end%><br><br>
+
+<form action="/items" method="POST">
+    <label for=add_new_item>Add New Item</label>
+    <input type="text" id="add_new_item" name="name">
+
+
+<label>Box: </label>
+        <select name="box_id">
+            <%current_user.boxes.each do |box|%>
+                <option value="<%=box.id%>"><%=box.name.capitalize%></option><br>
+            <%end%>
+        </select>
+
+
+    <label>Category: </label>
+        <select name="category_id">
+            <option value="<%=@category.id%>"><%=@category.name.capitalize%></option>
+        </select>
+ 
+    <input type="submit" value="Submit"> 
+</form><br><br><br>
 
 <a href="/categories/<%=@category.id%>/edit">Edit Category</a><br><br>
 
