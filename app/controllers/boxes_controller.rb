@@ -16,7 +16,7 @@ class BoxesController < ApplicationController
         @box = Box.new(params)
         @box.user_id = current_user.id
         @box.save
-        redirect "/users/#{current_user.id}"
+        redirect "/boxes/#{@box.id}"
     end
 
     get '/boxes/:id' do
