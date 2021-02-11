@@ -10,8 +10,11 @@ class SessionsController < ApplicationController
             # make sure user signs up with valid data
         user = User.new(params) # params is a hash with k/v pairs
         # if form is blank and user email is already in system, redirect to signup page to try again
-        if user.name.blank? || user.email.blank? || user.password.blank? || User.find_by_email(params["email"])
-             # flash warning
+        if user.name.blank? || user.email.blank? || user.password.blank?
+            flash[:warning] = "Please input all fields."
+            redirect '/signup'
+        elsif User.find_by_email(params["email"])
+            flash[:warning] = "Email is already associated with another account. Please try again."
             redirect '/signup'
         else
                 # save new user
@@ -35,6 +38,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             redirect "/users/#{user.id}"
         else
+            flash[:error] = "Either email or password is incorrect. Please try again."
             redirect '/login'
         end
     end
