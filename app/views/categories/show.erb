@@ -2,7 +2,7 @@
 
 <%@category.items.each do |item|%>
     <a href="/items/<%=item.id%>"><%=item.name.capitalize%></a><br>
-    <%=item.box.name%><br><br>
+    <%=item.box.try(:name) || "N/A"%><br><br>
 <%end%><br><br>
 
 <form action="/items" method="POST">
