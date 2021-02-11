@@ -18,6 +18,7 @@ class BlogPostsController < ApplicationController
         redirect_if_not_logged_in
         @blog_post = BlogPost.new(params)
         if @blog_post.title.empty? || @blog_post.content.empty?
+            flash[:errors] = "Something went wrong - Spaces cannot be blank."
             redirect '/blog_posts/new'
         else
             @blog_post.user_id = current_user.id 
