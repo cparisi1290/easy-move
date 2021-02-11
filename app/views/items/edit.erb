@@ -6,11 +6,12 @@
     <label for="name">Name:</label>
     <input type="name" name="user[name]" id="name" value="<%=@item.name.capitalize%>"><br><br>
 
-    <label>Categories: </label>
-    <%current_user.categories.each do |category|%>
-      <input type="checkbox" id="category_<%=category.id%>" name="user[category_id]" value="<%=category.id%>">
-      <label><%=category.name.capitalize%></label>
-      <%end%><br><br>
+    <label>Category: </label>
+    <select name="user[category_id]">
+        <%current_user.categories.each do |category|%>
+            <option value="<%=category.id%>"><%=category.name.capitalize%></option><br>
+        <%end%>
+    </select><br><br>  
 
     <label>Box: </label>
     <select name="user[box_id]">
