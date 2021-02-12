@@ -1,3 +1,4 @@
+<div class="reroute-text">
 <h2><%=@blog_post.title%></h2>
 
 <h4>by 
@@ -11,10 +12,7 @@
 
 
 <%if @blog_post.user == current_user%>
-<a href="/blog_posts/<%=@blog_post.id%>/edit">Edit</a>
+<a href="/blog_posts/<%=@blog_post.id%>/edit">Edit Blog Post</a>
 
-<form action="/blog_posts/<%=@blog_post.id%>" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete">
-</form>
 <%end%>
+</div>
