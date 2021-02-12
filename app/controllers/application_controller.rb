@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
 	end
 
   error ActiveRecord::RecordNotFound do
-    redirect '/'
+    redirect to '/'
   end
 
   helpers do
