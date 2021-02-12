@@ -6,4 +6,10 @@ class UsersController < ApplicationController
         # find user id to display their show page
         erb :"users/show"
     end
+
+    get '/users/:id/blog_posts' do
+        redirect_if_not_logged_in        
+        @blog_posts = current_user.blog_posts
+        erb :"users/blog_posts_index"
+    end
 end
