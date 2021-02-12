@@ -1,0 +1,7 @@
+<div class="reroute-text">
+    <ul><h3>Your Boxes</h3>
+        <%@boxes.each.with_index(1) do |box, i|%>
+            <li><%=i%>. <a href="/boxes/<%=box.id%>"><%=box.name.capitalize%></a></li><br>
+        <%end%>
+    </ul>
+</div>
