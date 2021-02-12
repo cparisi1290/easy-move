@@ -1,21 +1,25 @@
-<h2>Create New Item</h2>
+<div class="reroute-text">
+    <h2>Create New Item</h2>
 
-<form action="/items" method="POST">
+    <form action="/items" method="POST">
 
-    <label for="name">Name:</label>
-    <input type="name" name="name" id="name"><br><br>
+        <label for="name">Name:</label>
+        <input type="name" name="name" id="name"><br><br>
 
-    <label>Categories: </label>
-    <%current_user.categories.each do |category|%>
-      <input type="checkbox" id="category_<%=category.id%>" name="user[category_ids][]" value="<%=category.id%>">
-      <label><%=category.name%></label>
-      <%end%><br><br>
+        <label>Box: </label>
+        <select name="box_id">
+            <%current_user.boxes.each do |box|%>
+                <option value="<%=box.id%>"><%=box.name.capitalize%></option><br>
+            <%end%>
+        </select><br><br>  
 
-    <label>Box: </label>
-    <select name="category_id">
-        <%current_user.boxes.each do |box|%>
-            <option value="<%=box.id%>"><%=box.name.capitalize%></option><br>
-        <%end%>
-    </select><br><br>  
-    <input type="submit" value="Create">
-</form>
+        <label>Category: </label>
+        <select name="category_id">
+            <%current_user.categories.each do |category|%>
+                <option value="<%=category.id%>"><%=category.name.capitalize%></option><br>
+            <%end%>
+        </select><br><br><br>
+        
+        <input type="submit" value="Create Item">
+    </form>
+</div>
