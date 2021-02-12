@@ -1,3 +1,4 @@
+<div class="reroute-text">
 <h2>Edit <%=@category.name.capitalize%> Category</h2>
 
 <form action="/categories/<%=@category.id%>" method="POST">
@@ -13,3 +14,4 @@
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete Category">
 </form>
+</div>
