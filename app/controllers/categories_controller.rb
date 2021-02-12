@@ -1,10 +1,10 @@
 class CategoriesController < ApplicationController
 
 
-    get '/users/show' do
+    get '/categories' do
         redirect_if_not_logged_in
-        @categories = Category.all
-        redirect "/users/#{current_user.id}"
+        @categories = current_user.categories
+        erb :"categories/index"
     end
 
     get '/categories/new' do
