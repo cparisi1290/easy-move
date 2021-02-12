@@ -1,29 +1,31 @@
-<h2>Edit Item: <%=@item.name.capitalize%>, Box: <%=@item.box.name.capitalize%></h2>
+<div class="reroute-text">
+    <h2>Edit Item: <%=@item.name.capitalize%></h2>
 
-<form action="/items/<%=@item.id%>" method="POST">
-    <input type="hidden" name="_method" value="PATCH">
+    <form action="/items/<%=@item.id%>" method="POST">
+        <input type="hidden" name="_method" value="PATCH">
 
-    <label for="name">Name:</label>
-    <input type="name" name="user[name]" id="name" value="<%=@item.name.capitalize%>"><br><br>
+        <label for="name">Name:</label>
+        <input type="name" name="user[name]" id="name" value="<%=@item.name.capitalize%>"><br><br>
 
-    <label>Category: </label>
-    <select name="user[category_id]">
-        <%current_user.categories.each do |category|%>
-            <option value="<%=category.id%>"><%=category.name.capitalize%></option><br>
-        <%end%>
-    </select><br><br>  
+        <label>Category: </label>
+        <select name="user[category_id]">
+            <%current_user.categories.each do |category|%>
+                <option value="<%=category.id%>"><%=category.name.capitalize%></option><br>
+            <%end%>
+        </select><br><br>  
 
-    <label>Box: </label>
-    <select name="user[box_id]">
-        <%current_user.boxes.each do |box|%>
-            <option value="<%=box.id%>"><%=box.name.capitalize%></option><br>
-        <%end%>
-    </select><br><br>  
+        <label>Box: </label>
+        <select name="user[box_id]">
+            <%current_user.boxes.each do |box|%>
+                <option value="<%=box.id%>"><%=box.name.capitalize%></option><br>
+            <%end%>
+        </select><br><br>  
 
-    <input type="submit" Value="Edit Item">
-</form>
+        <input type="submit" Value="Edit Item">
+    </form>
 
-<form action="/items/<%=@item.id%>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Item">
-</form>
+    <form action="/items/<%=@item.id%>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Item">
+    </form>
+</div>
