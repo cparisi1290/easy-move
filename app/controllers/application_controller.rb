@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "ez-move"
+    set :show_exceptions, false
     register Sinatra::Flash
   end
 
@@ -19,6 +20,10 @@ class ApplicationController < Sinatra::Base
 		status 404
 		erb :status404
 	end
+
+  error ActiveRecord::RecordNotFound do
+    redirect '/'
+  end
 
   helpers do
 
