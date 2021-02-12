@@ -1,0 +1,7 @@
+<div class="reroute-text">
+    <ul><h3>A List of Your Categories</h3>
+        <%@categories.each.with_index(1) do |category, i|%>
+            <li><%=i%>. <a href="/categories/<%=category.id%>"><%=category.name.capitalize%></a></li><br>
+        <%end%>
+    </ul>
+</div>
