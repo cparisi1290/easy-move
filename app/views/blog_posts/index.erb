@@ -1,3 +1,4 @@
+<div class="reroute-text">
 <h2>All Blog Posts</h2>
 
 <%@blog_posts.each.with_index(1) do |blog, i|%>
@@ -5,3 +6,4 @@
           by: <%=blog.user.name.capitalize%>
           <h5><%=blog.formatted_created_at%></h5><br>
 <%end%>
+</div>
