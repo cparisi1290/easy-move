@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
 
-    get '/users/show' do
+    get '/items' do
         redirect_if_not_logged_in
-        @items = Item.all
-        redirect "/users/#{current_user.id}"
+        @items = current_user.items
+        erb :"items/index"
     end
 
     get '/items/new' do
