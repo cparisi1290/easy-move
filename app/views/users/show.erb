@@ -1,32 +1,43 @@
-<h2>Welcome <%=current_user.name.capitalize%>!</h2>
+<h2 class="reroute-text">Welcome <%=current_user.name.capitalize%>!</h2>
+<h3 class="reroute-text">What would you like to view?</h3><br><br>
+<div class="grid-container">
 
-<div class="user blog posts list">
-<h3>Your Blog Posts</h3>
-<%@user.blog_posts.each.with_index(1) do |blog, i|%>
-    <%=i%>. <a href="/blog_posts/<%=blog.id%>"><%=blog.title%></a><br>
-        <h5><%=blog.formatted_created_at%></h5>
-<%end%> 
-</div>  
+    <div class="items_list">
+        <ul><h3>Your Items</h3>
+            <!--<%@user.items.each.with_index(1) do |item, i|%>
+               <li><%=i%>. <a href="/items/<%=item.id%>"><%=item.name.capitalize%></a></li><br>
+            <%end%>-->
+            <a href="/items"><img src="/images/list.png" alt="check-list" width="200" height="200"></a>
+        </ul>
+    </div>
 
-<div class="items list">
-<h3>Your Items</h3>
-<%@user.items.each.with_index(1) do |item, i|%>
-    <%=i%>. <a href="/items/<%=item.id%>"><%=item.name.capitalize%></a><br>
-<%end%>
-</div>
+    <div class="boxes_list">
+        <ul><h3>Your Boxes</h3>
+            <!--<%@user.boxes.each.with_index(1) do |box, i|%>
+                <li><%=i%>. <a href="/boxes/<%=box.id%>"><%=box.name.capitalize%></a></li><br>
+            <%end%>-->
+            <a href="/boxes"><img src="/images/moving-boxes.png" alt="moving-boxes" width="200" height="200"></a>
+        </ul>
+    </div>
 
-<div class="box list">
-<h3>Your Boxes</h3>
-<%@user.boxes.each.with_index(1) do |box, i|%>
-    <%=i%>. <a href="/boxes/<%=box.id%>"><%=box.name.capitalize%></a><br>
-<%end%>
-</div>
+    <div class="categories_list">
+        <ul><h3>Your Categories</h3>
+            <!--<%@user.categories.each.with_index(1) do |category, i|%>
+               <li><%=i%>. <a href="/categories/<%=category.id%>"><%=category.name.capitalize%></a></li><br>
+            <%end%>-->
+            <a href="/categories"><img src="/images/categories.png" alt="a-hierarchy" width="200" height="200"></a>
+        </ul>
+    </div>
 
-<div class="category list">
-<h3>Your Categories</h3>
-<%@user.categories.each.with_index(1) do |category, i|%>
-    <%=i%>. <a href="/categories/<%=category.id%>"><%=category.name.capitalize%></a><br>
-<%end%>
-</div>
+    <div class="user_blog_posts">
+        <h3>Your Blog Posts</h3>
+        <!--<%@user.blog_posts.each.with_index(1) do |blog, i|%>
+            <%=i%>. <a href="/blog_posts/<%=blog.id%>"><%=blog.title%></a><br>
+                <h5><%=blog.formatted_created_at%></h5>
+        <%end%>-->
+        <a href="/users/<%=current_user.id%>/blog_posts"><img src="/images/user_blog_posts.jpg" alt="post-clouds" width="200" height="200"></a>
+    </div>
+
+</div> 
 
 
