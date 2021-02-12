@@ -1,9 +1,9 @@
 class BoxesController < ApplicationController
 
-    get '/users/show' do
+    get '/boxes' do
         redirect_if_not_logged_in
-        @boxes = Box.all
-        redirect "/users/#{current_user.id}"
+        @boxes = current_user.boxes
+        erb :"boxes/index"
     end
 
     get '/boxes/new' do
