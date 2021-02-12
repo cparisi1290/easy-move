@@ -1,8 +1,9 @@
+<div class="reroute-text">
 <h2>List of Your Items Sorted in the <%=@category.name.capitalize%> Category</h2>
 
 <%@category.items.each do |item|%>
-    <a href="/items/<%=item.id%>"><%=item.name.capitalize%></a><br>
-    <%=item.box.try(:name) || "N/A"%><br><br>
+    <h3><a href="/items/<%=item.id%>"><%=item.name.capitalize%></a></h3>
+    <h5><a href="/boxes/<%=item.box.id%>"><%=item.box.name.capitalize%></h5></a><br>
 <%end%><br><br>
 
 <form action="/items" method="POST">
@@ -21,14 +22,11 @@
     <label>Category: </label>
         <select name="category_id">
             <option value="<%=@category.id%>"><%=@category.name.capitalize%></option>
-        </select>
+        </select><br>
  
     <input type="submit" value="Submit"> 
-</form><br><br><br>
+</form><br><br>
 
 <a href="/categories/<%=@category.id%>/edit">Edit Category</a><br><br>
 
-<form action="/categories/<%=@category.id%>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Category">
-</form>
+</div>
