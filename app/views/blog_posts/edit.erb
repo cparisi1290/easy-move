@@ -1,3 +1,4 @@
+<div class="reroute-text">
 <h2>Edit Your Post</h2>
 
 <form action="/blog_posts/<%=@blog_post.id%>" method="POST">
@@ -7,12 +8,12 @@
         <input type="title" name="user[title]" value="<%=@blog_post.title%>"><br>
 
         <label for="content">Content:</label>
-        <textarea style="width:auto; height:auto;" id="content" name="user[content]"><%=@blog_post.content%></textarea><br>
+        <textarea style="width:auto; height:auto;" id="content" name="user[content]"><%=@blog_post.content%></textarea><br><br><br>
         
         <input type="submit" value="Edit">
-    </form>
-
+    </form><br><br><br>
 <form action="/blog_posts/<%=@blog_post.id%>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete">
 </form>
+</div>
